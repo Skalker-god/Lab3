@@ -31,7 +31,7 @@ public class ClockExt2 extends ClockExt{
 
         milliseconds+=100;
 
-        if(milliseconds>1000){
+        if(milliseconds>=1000){
 
             nextSeconds();
             milliseconds=0;
@@ -49,4 +49,5 @@ public class ClockExt2 extends ClockExt{
                 ", milliseconds=" + milliseconds +
                 '}';
     }
+
 }
