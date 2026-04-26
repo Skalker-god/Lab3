@@ -19,7 +19,7 @@ public class ClockFrame2 {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         label.setFont(new Font("Consolas", Font.BOLD, 32));
-        label.setForeground(Color.WHITE);
+        label.setForeground(Color.YELLOW);
         label.setHorizontalAlignment(SwingConstants.CENTER);
 
         panel.setBackground(new Color(25, 25, 112)); // темно-синій фон
@@ -34,6 +34,10 @@ public class ClockFrame2 {
         int second = now.get(java.util.Calendar.SECOND);
         int millis = now.get(java.util.Calendar.MILLISECOND);
 
+        String[] days = {"Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "П'ятниця", "Субота"};
+        int dayIndex = now.get(java.util.Calendar.DAY_OF_WEEK) - 1;
+        String dayName = days[dayIndex];
+
         ClockExt2 clockExt = new ClockExt2(hour, minute, second, millis);
 
         Timer timer = new Timer(100, e -> {
@@ -42,6 +46,7 @@ public class ClockFrame2 {
             // Форматований вивід:  HH : MM : SS : mmm
             String timeText = String.format(
                     "%02d : %02d : %02d : %03d",
+                    dayName,
                     clockExt.getHour(),
                     clockExt.getMinute(),
                     clockExt.getSeconds(),
